@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/index.d.ts" />
 
 angular.module('superCromeApp', [
-    'app.demo',
+    'app.home',
     'app.templates'
 ]);
 

@@ -18,7 +18,7 @@ var _             = require('underscore');
 
 // Lint to keep us in line
 gulp.task('lint', function() {
-	return gulp.src('public/src/**/*.ts')
+	return gulp.src('public/src/app/**/*.ts')
 		.pipe(tslint())
 		.pipe(tslint.report('default'));
 });
@@ -26,7 +26,7 @@ gulp.task('lint', function() {
 // Concatenate & minify JS
 gulp.task('scripts', function() {
 
-	return gulp.src('public/src/**/*.ts')
+	return gulp.src('public/src/app/**/*.ts')
 		.pipe(addStream.obj(prepareTemplates()))
 		.pipe(sourceMaps.init())
 		.pipe(ts({
@@ -42,23 +42,54 @@ gulp.task('scripts', function() {
 });
 
 // Compile, concat & minify sass
+// gulp.task('sass', function () {
+// 	return gulp.src('public/src/**/*.scss')
+// 		.pipe(sass().on('error', sass.logError))
+// 		.pipe(gulp.dest('public/dist/css'));
+// });
+
+// gulp.task('concatCss', ['sass'], function () {
+// 	return gulp.src('public/dist/css/**/*.css')
+// 		.pipe(concatCss("app.css"))
+// 		.pipe(gulp.dest('public/dist'))
+// });
+
+// gulp.task('cssNano', ['sass', 'concatCss'], function() {
+// 	return gulp.src('public/dist/app.css')
+// 		.pipe(cssNano())
+// 		.pipe(rename({suffix: '.min'}))
+// 		.pipe(gulp.dest('public/dist'));
+// });
+
 gulp.task('sass', function () {
-	return gulp.src('public/src/**/*.scss')
+	return gulp.src('public/src/app/styles/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('public/dist/css'));
 });
 
 gulp.task('concatCss', ['sass'], function () {
-	return gulp.src('public/dist/css/**/*.css')
+	return gulp.src('public/src/app/styles/*.css')
 		.pipe(concatCss("app.css"))
 		.pipe(gulp.dest('public/dist'))
 });
 
 gulp.task('cssNano', ['sass', 'concatCss'], function() {
-	return gulp.src('public/dist/app.css')
+	return gulp.src('public/src/app/styles/main.css')
 		.pipe(cssNano())
 		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest('public/dist'));
+});
+
+// Grab and move all image files to dist
+gulp.task('build-images', function() {
+	return gulp.src('./public/img/**/*.{gif,jpg,png,svg}')
+		.pipe(gulp.dest('public/dist/img'));
+});
+
+// grab index.html and move it into dist
+gulp.task('index', function() {
+	return gulp.src('./public/src/app/index.html')
+		.pipe(gulp.dest('public/dist/'));
 });
 
 // Inject dist + bower lib files
@@ -88,7 +119,7 @@ gulp.task('inject', ['scripts', 'cssNano'], function(){
 
 });
 
-gulp.task('serve', ['scripts', 'cssNano', 'inject'], function(){
+gulp.task('serve', ['scripts', 'cssNano', 'build-images', 'index', 'inject'], function(){
 
 	var options = {
 		restartable: "rs",
@@ -96,7 +127,7 @@ gulp.task('serve', ['scripts', 'cssNano', 'inject'], function(){
 		ext: "ts html scss",
 		script: 'server.js',
 		delayTime: 1,
-		watch: ['public/src/**/*(*.ts|*.html)', 'public/src/**/*.scss'],
+		watch: ['public/src/app/**/*(*.ts|*.html)', 'public/src/**/*.scss', 'public/img/**/*.{gif,jpg,png,svg}', 'public/src/app/index.html'],
 		env: {
 			'PORT': 3000
 		},
@@ -127,14 +158,16 @@ gulp.task('serve', ['scripts', 'cssNano', 'inject'], function(){
 });
 
 // Default Task
-gulp.task('default', ['lint', 'scripts', 'sass', 'concatCss', 'cssNano', 'inject', 'serve']);
+gulp.task('default', ['lint', 'scripts', 'sass', 'concatCss', 'cssNano', 'build-images', 'inject', 'serve']);
+
+gulp.task('build', ['index', 'default']);
 
 function prepareTemplates() {
 
 	// we get a conflict with the < % = var % > syntax for $templateCache
 	// template header, so we'll just encode values to keep yo happy
 	var encodedHeader = "angular.module(&quot;&lt;%= module %&gt;&quot;&lt;%= standalone %&gt;).run([&quot;$templateCache&quot;, function($templateCache:any) {";
-	return gulp.src('public/src/**/*.html')
+	return gulp.src('public/src/app/**/*.html')
 		.pipe(templateCache('templates.ts', {
 			root: "app-templates",
 			module: "app.templates",

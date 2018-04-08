@@ -2,7 +2,7 @@
 <html lang="en" ng-app="superCromeApp">
 <head>
 	<meta charset="UTF-8">
-	<title>Hello Angular TypeScript!</title>
+	<title>Super Crome: Bullet Purgatory</title>
 
 	<!-- bower:css -->
 	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
@@ -11,6 +11,8 @@
 	<!-- inject:css -->
 	<link rel="stylesheet" href="/dist/app.css">
 	<!-- endinject -->
+
+	<link rel="stylesheet" href="/styles/main.css">
 
 	<style>
 		body {
@@ -27,9 +29,15 @@
 	<![endif]-->
 
 </head>
-<body>
+<body ng-app="superCromeApp">
 
-<div class="container">
+	<div class="header">
+		<!-- nothing here yet -->
+	</div>
+
+	<home></home>
+
+<!-- <div class="container">
 
 	<div class="starter-template">
 		<h1>super-crome has been scaffolded, yo!</h1>
@@ -39,7 +47,13 @@
 
 	</div>
 
-</div>
+</div> -->
+
+	<div ng-view="" class="view"></div>
+
+	<!-- <div class="footer"> -->
+		<!-- nothing here yet -->
+	<!-- </div> -->
 
 	<!-- bower:js -->
 	<script src="lib/bootstrap/dist/js/bootstrap.js"></script>

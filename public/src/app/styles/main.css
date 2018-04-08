@@ -1,0 +1,28 @@
+body {
+	background: #000;
+}
+
+.header,
+.footer {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.header {
+
+}
+
+.footer { 
+	position: relative;
+	top: 81px;
+	padding-bottom: 19px;
+	font-size: 12px;
+	padding-top: 19px;
+	background: #fff;
+}
+
+.view {
+	position: relative;
+	top: 80px;
+	min-height: calc(~"100vh - 136px");
+}
