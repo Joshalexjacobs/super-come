@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Super Crome: Bullet Purgatory</title>
 
+	<link href="https://fonts.googleapis.com/css?family=Roboto:500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
 	<!-- bower:css -->
 	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
 	<!-- endbower -->
@@ -12,7 +15,7 @@
 	<link rel="stylesheet" href="/dist/app.css">
 	<!-- endinject -->
 
-	<link rel="stylesheet" href="/styles/main.css">
+	<link rel="stylesheet" href="/src/app/styles/main.css">
 
 	<style>
 		body {
@@ -32,28 +35,22 @@
 <body ng-app="superCromeApp">
 
 	<div class="header">
-		<!-- nothing here yet -->
 	</div>
 
 	<home></home>
+	<vod></vod>
 
-<!-- <div class="container">
-
-	<div class="starter-template">
-		<h1>super-crome has been scaffolded, yo!</h1>
-		<p class="lead">With layouts and styling by bootstrap</p>
-
-		<demo></demo>
-
+	<div class="row">
+		<div class="col textarea">
+			<p>Built with state of the art graphics, <span style="color: red">SUPER CROME: BULLET PURGATORY</span> is a fast-paced, TOUGH AS NAILS, arcade shooter. If you're bold enough to follow the development of this HIGHLY ANTICIPATED digital interactive experience, click the Twitter link below.</p>
+			<p>Viewer discretion is advised.</p>
+		</div>
 	</div>
-
-</div> -->
 
 	<div ng-view="" class="view"></div>
 
-	<!-- <div class="footer"> -->
-		<!-- nothing here yet -->
-	<!-- </div> -->
+	<mainfooter></mainfooter>
+
 
 	<!-- bower:js -->
 	<script src="lib/bootstrap/dist/js/bootstrap.js"></script>

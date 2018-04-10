@@ -1,5 +1,20 @@
+* {
+	font-family: 'Press Start 2P', sans-serif;
+}
+
 body {
 	background: #000;
+}
+
+p {
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+}
+
+.row {
+	margin-right: 0px;
+	margin-left: 0px;
 }
 
 .header,
@@ -19,6 +34,14 @@ body {
 	font-size: 12px;
 	padding-top: 19px;
 	background: #fff;
+}
+
+.textarea {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	max-width: 50%;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .view {

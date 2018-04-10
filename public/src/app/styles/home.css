@@ -4,11 +4,11 @@
 }
 
 .homeImage {
-	height: 424px;
+	height: 106px;
 	background-image: url('/img/logo.png');
 	background-size: contain;
 	background-repeat: no-repeat;
-	width: 1024px;
+	width: 256px;
 	background-position: center;
 	margin-right: 10px;
 	margin-left: 10px;

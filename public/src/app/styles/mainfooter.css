@@ -1,0 +1,31 @@
+* {
+	margin: 0;
+}
+
+.mainfooter {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 500px;
+}
+
+footer .row {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+footer .col {
+	text-align: center;
+}
+
+a:link,
+a:visited,
+a:active {
+	color: #fff;
+}
+
+a:hover {
+	color: red;
+	text-decoration: none;
+}
