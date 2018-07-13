@@ -82,7 +82,7 @@ gulp.task('cssNano', ['sass', 'concatCss'], function() {
 
 // Grab and move all image files to dist
 gulp.task('build-images', function() {
-	return gulp.src('./public/img/**/*.{gif,jpg,png,svg}')
+	return gulp.src('./public/img/**/*.{gif,jpg,png,svg,mp4}')
 		.pipe(gulp.dest('public/dist/img'));
 });
 
@@ -127,7 +127,7 @@ gulp.task('serve', ['scripts', 'cssNano', 'build-images', 'index', 'inject'], fu
 		ext: "ts html scss",
 		script: 'server.js',
 		delayTime: 1,
-		watch: ['public/src/app/**/*(*.ts|*.html)', 'public/src/**/*.scss', 'public/img/**/*.{gif,jpg,png,svg}', 'public/src/app/index.html'],
+		watch: ['public/src/app/**/*(*.ts|*.html)', 'public/src/**/*.scss', 'public/img/**/*.{gif,jpg,png,svg,mp4}', 'public/src/app/index.html'],
 		env: {
 			'PORT': 3000
 		},
