@@ -4,7 +4,8 @@ angular.module('superCromeApp', [
     'app.home',
     'app.mainfooter',
     'app.vod',
-    'app.clips',
+    //'app.clips',
+    'app.screenshots',
     'app.templates'
 ]);
 

@@ -1,0 +1,23 @@
+* {
+	margin: 0;
+}
+
+.screenshots .row {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.screenshots {
+	padding-bottom: 75px;	
+}
+
+.screenshots .col {
+	margin-left: auto;
+	margin-right: auto;	
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;		
+}
